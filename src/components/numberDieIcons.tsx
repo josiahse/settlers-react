@@ -2,45 +2,25 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import React from "react";
 import { TNumRoll } from "../typesAndConsts";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 type TProps = { value: TNumRoll; color: string };
 
+const DIE_ICONS: Record<number, IconProp> = {
+  1: solid("dice-one"),
+  2: solid("dice-two"),
+  3: solid("dice-three"),
+  4: solid("dice-four"),
+  5: solid("dice-five"),
+  6: solid("dice-six"),
+};
+
 const NumberDieIcons = ({ value, color }: TProps) => {
-  const getIcon = (value: number) => {
-    switch (value) {
-      case 1:
-        return (
-          <FontAwesomeIcon size="lg" color={color} icon={solid("dice-one")} />
-        );
-
-      case 2:
-        return (
-          <FontAwesomeIcon size="lg" color={color} icon={solid("dice-two")} />
-        );
-
-      case 3:
-        return (
-          <FontAwesomeIcon size="lg" color={color} icon={solid("dice-three")} />
-        );
-
-      case 4:
-        return (
-          <FontAwesomeIcon size="lg" color={color} icon={solid("dice-four")} />
-        );
-
-      case 5:
-        return (
-          <FontAwesomeIcon size="lg" color={color} icon={solid("dice-five")} />
-        );
-
-      case 6:
-        return (
-          <FontAwesomeIcon size="lg" color={color} icon={solid("dice-six")} />
-        );
-    }
-  };
-
-  return <div style={{ fontSize: 150 }}>{getIcon(value)}</div>;
+  return (
+    <div style={{ fontSize: 150, backgroundColor: "white" }}>
+      {<FontAwesomeIcon size="lg" color={color} icon={DIE_ICONS[value]} />}
+    </div>
+  );
 };
 
 export default NumberDieIcons;

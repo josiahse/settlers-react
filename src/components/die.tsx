@@ -1,5 +1,6 @@
 import React from "react";
 import { TNumRoll } from "../typesAndConsts";
+import ColorDie from "./colorDie";
 import NumberDieIcons from "./numberDieIcons";
 
 type TProps = {
@@ -16,7 +17,7 @@ const Die = ({ value, variant }: TProps) => {
       return <NumberDieIcons value={value as TNumRoll} color={variant} />;
     }
     case "color": {
-      return;
+      return <ColorDie color={value as string} />;
     }
   }
 };

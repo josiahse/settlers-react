@@ -6,10 +6,8 @@ import { CssBaseline } from "@mui/material";
 const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <CssBaseline />
-        <Dice />
-      </header>
+      <CssBaseline />
+      <Dice />
     </div>
   );
 };
