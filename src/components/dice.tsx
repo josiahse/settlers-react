@@ -2,13 +2,35 @@ import { Button } from "@mui/material";
 import React, { useState } from "react";
 import { TColorRoll, COLORS, TNumRoll, TRoll } from "../typesAndConsts";
 import { randomInt } from "../util/util";
+import BarbProgress from "./barbProgress";
 import ColorDie from "./colorDie";
 import NumberDieIcons from "./numberDieIcons";
 
 const Dice = () => {
   const [rolls, setRolls] = useState<TRoll[]>([]);
+  const [barb, setBarb] = useState<number>(0);
+  const [barbMsg, setBarbMsg] = useState<boolean>(false);
 
   const latestRoll = rolls.length > 0 && rolls[rolls.length - 1];
+
+  const handleRoll = () => {
+    setBarbMsg(false);
+    const colorRoll = COLORS[randomInt(6) - 1] as TColorRoll;
+    if (colorRoll === "black") {
+      if (barb + 1 === 7) {
+        setBarb(0);
+        setBarbMsg(true);
+      } else setBarb(barb + 1);
+    }
+    setRolls(rolls => [
+      ...rolls,
+      {
+        yellow: randomInt(6) as TNumRoll,
+        red: randomInt(6) as TNumRoll,
+        color: colorRoll,
+      },
+    ]);
+  };
 
   return (
     <div
@@ -35,19 +57,9 @@ const Dice = () => {
         <NumberDieIcons value={latestRoll.red} color={"red"} />
         <ColorDie color={latestRoll.color} />
       </div>
-      <Button
-        variant="contained"
-        onClick={() =>
-          setRolls(rolls => [
-            ...rolls,
-            {
-              yellow: randomInt(6) as TNumRoll,
-              red: randomInt(6) as TNumRoll,
-              color: COLORS[randomInt(6) - 1] as TColorRoll,
-            },
-          ])
-        }
-      >
+      <BarbProgress barb={barb} />
+      {barbMsg ? "The barbarians strike!" : ""}
+      <Button variant="contained" onClick={handleRoll}>
         Roll Dice
       </Button>
     </div>
