@@ -2,7 +2,8 @@ import { Button } from "@mui/material";
 import React, { useState } from "react";
 import { TColorRoll, COLORS, TNumRoll, TRoll } from "../typesAndConsts";
 import { randomInt } from "../util/util";
-import Die from "./die";
+import ColorDie from "./colorDie";
+import NumberDieIcons from "./numberDieIcons";
 
 const Dice = () => {
   const [rolls, setRolls] = useState<TRoll[]>([]);
@@ -12,23 +13,27 @@ const Dice = () => {
   return (
     <div
       style={{
+        width: "100%",
         height: "100%",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "center",
+        alignItems: "center",
       }}
     >
       <div
         style={{
           display: "flex",
           alignItems: "center",
-          justifyContent: "space-around",
-          width: "75%",
+          justifyContent: "space-between",
+          minWidth: "750px",
+          maxWidth: "1000px",
+          width: "55%",
+          marginRight: "50px",
         }}
       >
-        <Die value={latestRoll?.yellow ?? ""} variant="yellow" />
-        <Die value={latestRoll?.red ?? ""} variant="red" />
-        <Die value={latestRoll?.color ?? ""} variant="color" />
+        <NumberDieIcons value={latestRoll.yellow} color={"yellow"} />
+        <NumberDieIcons value={latestRoll.red} color={"red"} />
+        <ColorDie color={latestRoll.color} />
       </div>
       <Button
         variant="contained"
