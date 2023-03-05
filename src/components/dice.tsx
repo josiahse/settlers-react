@@ -53,12 +53,14 @@ const Dice = () => {
           marginRight: "50px",
         }}
       >
-        <NumberDieIcons value={latestRoll.yellow} color={"yellow"} />
-        <NumberDieIcons value={latestRoll.red} color={"red"} />
+        <NumberDieIcons value={latestRoll.yellow ?? 1} color={"yellow"} />
+        <NumberDieIcons value={latestRoll.red ?? 6} color={"red"} />
         <ColorDie color={latestRoll.color} />
       </div>
       <BarbProgress barb={barb} />
-      {barbMsg ? "The barbarians strike!" : ""}
+      <p style={{ height: "30px" }}>
+        {barbMsg ? "The barbarians strike!" : ""}
+      </p>
       <Button variant="contained" onClick={handleRoll}>
         Roll Dice
       </Button>

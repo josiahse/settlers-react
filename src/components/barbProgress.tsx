@@ -10,11 +10,11 @@ const BarbProgress = ({ barb }: TProps) => {
         display: "flex",
         width: "600px",
         justifyContent: "space-between",
-        marginBottom: "20px",
       }}
     >
       {range(8).map(i => (
         <div
+          key={i}
           style={{
             borderRadius: "50%",
             height: "50px",
