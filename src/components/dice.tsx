@@ -50,7 +50,8 @@ const Dice = () => {
           minWidth: "750px",
           maxWidth: "1000px",
           width: "55%",
-          marginRight: "50px",
+          height: "300px",
+          marginRight: "270px",
         }}
       >
         <NumberDieIcons value={latestRoll.yellow ?? 1} color={"yellow"} />
