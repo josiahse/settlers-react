@@ -17,7 +17,7 @@ const DIE_ICONS: Record<number, IconProp> = {
 
 const NumberDieIcons = ({ value, color }: TProps) => {
   return (
-    <div style={{ fontSize: 150, backgroundColor: "white" }}>
+    <div style={{ fontSize: 150 }}>
       {<FontAwesomeIcon size="lg" color={color} icon={DIE_ICONS[value]} />}
     </div>
   );
