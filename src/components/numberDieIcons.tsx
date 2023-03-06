@@ -17,7 +17,7 @@ const DIE_ICONS: Record<number, IconProp> = {
 
 const NumberDieIcons = ({ value, color }: TProps) => {
   return (
-    <span className="fa-stack fa-2x">
+    <span className="fa-stack">
       <FontAwesomeIcon
         className="fa-stack-1x"
         color={color === "yellow" ? "rgb(237, 222, 64)" : color}

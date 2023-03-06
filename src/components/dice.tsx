@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import React, { useState } from "react";
-import { TColorRoll, COLORS, TNumRoll, TRoll } from "../typesAndConsts";
+import { COLORS, TNumRoll, TRoll } from "../typesAndConsts";
 import { randomInt } from "../util/util";
 import BarbProgress from "./barbProgress";
 import ColorDie from "./colorDie";
@@ -18,7 +18,7 @@ const Dice = () => {
 
   const handleRoll = () => {
     setBarbMsg(false);
-    const colorRoll = COLORS[randomInt(6) - 1] as TColorRoll;
+    const colorRoll = COLORS[randomInt(6) - 1];
     if (colorRoll === "black") {
       if (barb + 1 === 7) {
         setBarb(0);

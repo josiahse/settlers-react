@@ -1,4 +1,11 @@
-export const COLORS = ["black", "black", "black", "yellow", "green", "blue"];
+export const COLORS: TColorRoll[] = [
+  "black",
+  "black",
+  "black",
+  "yellow",
+  "green",
+  "blue",
+];
 export const DIE_SIZE = "250px";
 
 export type TNumRoll = 1 | 2 | 3 | 4 | 5 | 6;
