@@ -11,7 +11,10 @@ const Dice = () => {
   const [barb, setBarb] = useState<number>(0);
   const [barbMsg, setBarbMsg] = useState<boolean>(false);
 
-  const latestRoll = rolls.length > 0 && rolls[rolls.length - 1];
+  const latestRoll: TRoll =
+    rolls.length > 0
+      ? rolls[rolls.length - 1]
+      : { yellow: 1, red: 6, color: "black" };
 
   const handleRoll = () => {
     setBarbMsg(false);
@@ -54,8 +57,8 @@ const Dice = () => {
           marginRight: "270px",
         }}
       >
-        <NumberDieIcons value={latestRoll.yellow ?? 1} color={"yellow"} />
-        <NumberDieIcons value={latestRoll.red ?? 6} color={"red"} />
+        <NumberDieIcons value={latestRoll.yellow} color={"yellow"} />
+        <NumberDieIcons value={latestRoll.red} color={"red"} />
         <ColorDie color={latestRoll.color} />
       </div>
       <BarbProgress barb={barb} />
