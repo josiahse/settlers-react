@@ -12,7 +12,6 @@ type TProps = { players: string[] };
 const Dice = ({ players }: TProps) => {
   const [rolls, setRolls] = useState<TRoll[]>([]);
   const [barb, setBarb] = useState<number>(0);
-  const [turn, setTurn] = useState<number>(0);
   const [barbMsg, setBarbMsg] = useState<boolean>(false);
 
   const latestRoll: TRoll =
@@ -21,7 +20,6 @@ const Dice = ({ players }: TProps) => {
       : { yellow: 1, red: 6, color: "black" };
 
   const handleRoll = () => {
-    setTurn(t => t + 1);
     setBarbMsg(false);
     const colorRoll = COLORS[randomInt(6) - 1];
     if (colorRoll === "black") {
@@ -50,7 +48,10 @@ const Dice = ({ players }: TProps) => {
         alignItems: "center",
       }}
     >
-      <p>{players?.length > 0 && `${players[turn % players.length]}'s turn`}</p>
+      <p>
+        {players?.length > 0 &&
+          `${players[rolls.length % players.length]}'s turn`}
+      </p>
       <div
         style={{
           display: "flex",
