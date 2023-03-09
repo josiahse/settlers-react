@@ -1,14 +1,18 @@
 import { Button } from "@mui/material";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { COLORS, TNumRoll, TRoll } from "../typesAndConsts";
 import { randomInt } from "../util/util";
 import BarbProgress from "./barbProgress";
 import ColorDie from "./colorDie";
 import NumberDieIcons from "./numberDieIcons";
 
-const Dice = () => {
+type TProps = { players: string[] };
+
+const Dice = ({ players }: TProps) => {
   const [rolls, setRolls] = useState<TRoll[]>([]);
   const [barb, setBarb] = useState<number>(0);
+  const [turn, setTurn] = useState<number>(0);
   const [barbMsg, setBarbMsg] = useState<boolean>(false);
 
   const latestRoll: TRoll =
@@ -17,6 +21,7 @@ const Dice = () => {
       : { yellow: 1, red: 6, color: "black" };
 
   const handleRoll = () => {
+    setTurn(t => t + 1);
     setBarbMsg(false);
     const colorRoll = COLORS[randomInt(6) - 1];
     if (colorRoll === "black") {
@@ -45,6 +50,9 @@ const Dice = () => {
         alignItems: "center",
       }}
     >
+      <p style={{ border: "1px solid red" }}>
+        {players?.length > 0 && `${players[turn % players.length]}'s turn`}
+      </p>
       <div
         style={{
           display: "flex",
@@ -67,6 +75,11 @@ const Dice = () => {
       </p>
       <Button variant="contained" onClick={handleRoll}>
         Roll Dice
+      </Button>
+      <Button>
+        <Link to="/" state={{ players }}>
+          Back to Setup
+        </Link>
       </Button>
     </div>
   );
