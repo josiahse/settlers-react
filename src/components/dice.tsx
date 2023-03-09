@@ -50,9 +50,7 @@ const Dice = ({ players }: TProps) => {
         alignItems: "center",
       }}
     >
-      <p style={{ border: "1px solid red" }}>
-        {players?.length > 0 && `${players[turn % players.length]}'s turn`}
-      </p>
+      <p>{players?.length > 0 && `${players[turn % players.length]}'s turn`}</p>
       <div
         style={{
           display: "flex",
