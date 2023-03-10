@@ -1,5 +1,5 @@
-import { Button } from "@mui/material";
-import React, { useState } from "react";
+import Button from "@mui/material/Button";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import { Link } from "react-router-dom";
 import { COLORS, TNumRoll, TRoll } from "../typesAndConsts";
 import { randomInt } from "../util/util";
@@ -9,10 +9,11 @@ import NumberDieIcons from "./numberDieIcons";
 
 interface TProps {
   players: string[];
+  rolls: TRoll[];
+  setRolls: Dispatch<SetStateAction<TRoll[]>>;
 }
 
-const Dice = ({ players }: TProps) => {
-  const [rolls, setRolls] = useState<TRoll[]>([]);
+const Dice = ({ players, rolls, setRolls }: TProps) => {
   const [barb, setBarb] = useState<number>(0);
   const [barbMsg, setBarbMsg] = useState<boolean>(false);
 
@@ -80,6 +81,11 @@ const Dice = ({ players }: TProps) => {
       <Button>
         <Link to="/" state={{ players }}>
           Back to Setup
+        </Link>
+      </Button>
+      <Button variant="contained">
+        <Link to="/stats" state={{ rolls }}>
+          Stats
         </Link>
       </Button>
     </div>
