@@ -7,7 +7,9 @@ import BarbProgress from "./barbProgress";
 import ColorDie from "./colorDie";
 import NumberDieIcons from "./numberDieIcons";
 
-type TProps = { players: string[] };
+interface TProps {
+  players: string[];
+}
 
 const Dice = ({ players }: TProps) => {
   const [rolls, setRolls] = useState<TRoll[]>([]);

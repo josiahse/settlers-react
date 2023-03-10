@@ -4,7 +4,10 @@ import React from "react";
 import { DIE_SIZE, TNumRoll } from "../typesAndConsts";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
-type TProps = { value: TNumRoll; color: string };
+interface TProps {
+  value: TNumRoll;
+  color: string;
+}
 
 const DIE_ICONS: Record<number, IconProp> = {
   1: solid("dice-one"),

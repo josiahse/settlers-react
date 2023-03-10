@@ -2,10 +2,10 @@ import { Button, TextField } from "@mui/material";
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { Link } from "react-router-dom";
 
-type TProps = {
+interface TProps {
   players: string[];
   setPlayers: Dispatch<SetStateAction<string[]>>;
-};
+}
 
 const GameSetup = ({ players, setPlayers }: TProps) => {
   const [input, setInput] = useState<string>("");

@@ -3,7 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { DIE_SIZE, TColorRoll } from "../typesAndConsts";
 
-type TProps = { color: TColorRoll };
+interface TProps {
+  color: TColorRoll;
+}
 
 const ColorDie = ({ color }: TProps) => {
   return (

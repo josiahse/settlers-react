@@ -1,7 +1,9 @@
 import React from "react";
 import { range } from "lodash";
 
-type TProps = { barb: number };
+interface TProps {
+  barb: number;
+}
 
 const BarbProgress = ({ barb }: TProps) => {
   return (
