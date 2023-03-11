@@ -3,6 +3,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { TRoll } from "../typesAndConsts";
 
+import Chart from "./chart";
+
 interface TProps {
   rolls: TRoll[];
 }
@@ -23,13 +25,6 @@ const Stats = ({ rolls }: TProps) => {
     12: 1 * length,
   };
 
-  const expectedColors: Record<string, number> = {
-    black: 3 * length,
-    blue: length,
-    green: length,
-    yellow: length,
-  };
-
   const numResults: Record<number, number> = {
     2: 0,
     4: 0,
@@ -43,17 +38,7 @@ const Stats = ({ rolls }: TProps) => {
     12: 0,
   };
 
-  const colorResults: Record<string, number> = {
-    black: 0,
-    blue: 0,
-    green: 0,
-    yellow: 0,
-  };
-
-  rolls.forEach(roll => {
-    numResults[roll.red + roll.yellow]++;
-    colorResults[roll.color]++;
-  });
+  rolls.forEach(roll => numResults[roll.red + roll.yellow]++);
 
   return (
     <div
@@ -65,6 +50,7 @@ const Stats = ({ rolls }: TProps) => {
         alignItems: "center",
       }}
     >
+      <Chart numResults={numResults} expectedNums={expectedNums} />
       <Button variant="contained">
         <Link to="/play">Back to roller</Link>
       </Button>
