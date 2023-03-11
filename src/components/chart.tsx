@@ -36,10 +36,7 @@ const Chart = ({ expectedNums, numResults }: TProps) => {
     },
     legend: {
       align: "left",
-      x: 80,
       verticalAlign: "top",
-      y: 80,
-      floating: true,
       backgroundColor: "rgba(255,255,255,0.25)",
     },
     series: [
@@ -56,7 +53,11 @@ const Chart = ({ expectedNums, numResults }: TProps) => {
     ],
   };
 
-  return <HighchartsReact highcharts={Highcharts} options={options} />;
+  return (
+    <div style={{ margin: "12px" }}>
+      <HighchartsReact highcharts={Highcharts} options={options} />
+    </div>
+  );
 };
 
 export default Chart;

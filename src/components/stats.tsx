@@ -27,6 +27,7 @@ const Stats = ({ rolls }: TProps) => {
 
   const numResults: Record<number, number> = {
     2: 0,
+    3: 0,
     4: 0,
     5: 0,
     6: 0,

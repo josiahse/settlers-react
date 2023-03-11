@@ -1,20 +1,15 @@
-import { Button, TextField } from "@mui/material";
-import React, { Dispatch, SetStateAction, useState } from "react";
+import { Button } from "@mui/material";
+import React, { Dispatch, SetStateAction } from "react";
 import { Link } from "react-router-dom";
+import NameField from "./nameField";
 
 interface TProps {
   players: string[];
   setPlayers: Dispatch<SetStateAction<string[]>>;
 }
 
-const GameSetup = ({ players, setPlayers }: TProps) => {
-  const [input, setInput] = useState<string>("");
-
-  const handleAdd = () => {
-    setPlayers(prev => [...prev, input]);
-    setInput("");
-  };
-
+const GameSetup = (props: TProps) => {
+  const { players, setPlayers } = props;
   return (
     <div
       style={{
@@ -27,16 +22,9 @@ const GameSetup = ({ players, setPlayers }: TProps) => {
       }}
     >
       {players.map((player, i) => (
-        <p key={i}>{`${i + 1}: ${player}`}</p>
+        <NameField key={i} index={i} player={player} setPlayers={setPlayers} />
       ))}
-      <TextField
-        value={input}
-        onChange={e => setInput(e.target.value)}
-        style={{ padding: "1em" }}
-      />
-      <Button variant="contained" onClick={handleAdd}>
-        Add Player
-      </Button>
+      {players.length < 6 && <NameField setPlayers={setPlayers} />}
       <Button>
         <Link to="/play" state={{ players }}>
           Finish Setup
