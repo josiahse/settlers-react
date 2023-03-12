@@ -48,7 +48,7 @@ const Chart = ({ expectedNums, numResults }: TProps) => {
       {
         name: "Expected",
         type: "spline",
-        data: Object.values(expectedNums).map(n => n / 36),
+        data: Object.values(expectedNums).map(n => (n / 36).toFixed(2)),
       },
     ],
   };
