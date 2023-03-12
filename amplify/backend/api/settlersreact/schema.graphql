@@ -1,0 +1,38 @@
+type Builds @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  game_id: ID!
+  player_color: String!
+  turn_number: Int!
+  resource: String!
+  roll_value: Int!
+}
+
+type Rolls @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  game_id: ID!
+  turn_number: Int!
+  red_value: Int!
+  yellow_value: Int!
+  die_color: String
+}
+
+type Players @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  game_id: ID!
+  player_name: String!
+  player_color: String!
+  seat_number: Int!
+}
+
+type Games @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  user_id: ID!
+  game_variant: String!
+}
+
+type Users @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  username: String!
+  password: String!
+}
+ 
