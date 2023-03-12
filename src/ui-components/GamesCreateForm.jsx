@@ -37,7 +37,7 @@ export default function GamesCreateForm(props) {
     setErrors({});
   };
   const validations = {
-    user_id: [{ type: "Required" }],
+    user_id: [],
     game_variant: [{ type: "Required" }],
   };
   const runValidationTasks = async (
@@ -115,7 +115,7 @@ export default function GamesCreateForm(props) {
     >
       <TextField
         label="User id"
-        isRequired={true}
+        isRequired={false}
         isReadOnly={false}
         value={user_id}
         onChange={(e) => {

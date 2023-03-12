@@ -118,7 +118,7 @@ type EagerGames = {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly user_id: string;
+  readonly user_id?: string | null;
   readonly game_variant: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
@@ -130,7 +130,7 @@ type LazyGames = {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly user_id: string;
+  readonly user_id?: string | null;
   readonly game_variant: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;

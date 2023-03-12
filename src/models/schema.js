@@ -268,7 +268,7 @@ export const schema = {
                     "name": "user_id",
                     "isArray": false,
                     "type": "ID",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "game_variant": {
@@ -390,5 +390,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.3.6",
-    "version": "e17e9a58c41db88a6ea46fce1d8ba821"
+    "version": "ff06a0a7f534ee586e43ed6257e32763"
 };
