@@ -6,6 +6,7 @@ import { randomInt } from "../util/util";
 import BarbProgress from "./barbProgress";
 import ColorDie from "./colorDie";
 import NumberDieIcons from "./numberDieIcons";
+import { Amplify, API, graphqlOperation } from "aws-amplify";
 
 interface TProps {
   players: string[];
@@ -22,7 +23,8 @@ const Dice = ({ players, rolls, setRolls }: TProps) => {
       ? rolls[rolls.length - 1]
       : { yellow: 1, red: 6, color: "black" };
 
-  const handleRoll = () => {
+  const handleRoll = async () => {
+    
     setBarbMsg(false);
     const colorRoll = COLORS[randomInt(6) - 1];
     if (colorRoll === "black") {

@@ -22,7 +22,6 @@ const Chart = ({ expectedNums, numResults }: TProps) => {
     ],
     yAxis: [
       {
-        // Primary yAxis
         title: { text: "Rolls" },
         labels: {
           style: {

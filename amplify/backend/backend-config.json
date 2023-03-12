@@ -21,5 +21,31 @@
       "providerPlugin": "awscloudformation",
       "service": "AppSync"
     }
+  },
+  "function": {
+    "addRoll": {
+      "build": true,
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_addRoll_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "addRoll"
+        }
+      ]
+    },
+    "AMPLIFY_function_addRoll_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "addRoll"
+        }
+      ]
+    }
   }
 }
