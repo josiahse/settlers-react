@@ -1,7 +1,7 @@
 import React from "react";
 import Highcharts from "highcharts/highstock";
 import HighchartsReact from "highcharts-react-official";
-import { toString } from "lodash";
+import { round, toString } from "lodash";
 
 interface TProps {
   expectedNums: Record<number, number>;
@@ -48,7 +48,7 @@ const Chart = ({ expectedNums, numResults }: TProps) => {
       {
         name: "Expected",
         type: "spline",
-        data: Object.values(expectedNums).map(n => (n / 36).toFixed(2)),
+        data: Object.values(expectedNums).map(n => round(n / 36, 2)),
       },
     ],
   };
