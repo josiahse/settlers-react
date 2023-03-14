@@ -1,5 +1,19 @@
 {
   "api": {
+    "apic353d6d8": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "addRoll"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
     "settlersreact": {
       "dependsOn": [],
       "output": {
