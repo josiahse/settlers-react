@@ -6,13 +6,15 @@ import { randomInt } from "../util/util";
 import BarbProgress from "./barbProgress";
 import ColorDie from "./colorDie";
 import NumberDieIcons from "./numberDieIcons";
-import { Amplify, API, graphqlOperation } from "aws-amplify";
+import { API } from "aws-amplify";
 
 interface TProps {
   players: string[];
   rolls: TRoll[];
   setRolls: Dispatch<SetStateAction<TRoll[]>>;
 }
+
+const MY_API = "apic353d6d8";
 
 const Dice = ({ players, rolls, setRolls }: TProps) => {
   const [barb, setBarb] = useState<number>(0);
@@ -23,8 +25,11 @@ const Dice = ({ players, rolls, setRolls }: TProps) => {
       ? rolls[rolls.length - 1]
       : { yellow: 1, red: 6, color: "black" };
 
-  const handleRoll = async () => {
-    
+  const addRoll = (n: number) => {
+    API.get(MY_API, `/addRoll/${n}`, {}).then(console.log).catch(console.error);
+  };
+
+  const handleRoll = () => {
     setBarbMsg(false);
     const colorRoll = COLORS[randomInt(6) - 1];
     if (colorRoll === "black") {
@@ -33,11 +38,16 @@ const Dice = ({ players, rolls, setRolls }: TProps) => {
         setBarbMsg(true);
       } else setBarb(barb + 1);
     }
+
+    const yellow = randomInt(6) as TNumRoll;
+    const red = randomInt(6) as TNumRoll;
+    addRoll(red + yellow);
+
     setRolls(rolls => [
       ...rolls,
       {
-        yellow: randomInt(6) as TNumRoll,
-        red: randomInt(6) as TNumRoll,
+        yellow,
+        red,
         color: colorRoll,
       },
     ]);

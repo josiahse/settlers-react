@@ -6,6 +6,10 @@ import GameSetup from "./components/gameSetup";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { TRoll } from "./typesAndConsts";
 import Stats from "./components/stats";
+import { Amplify } from "aws-amplify";
+import awsExports from "./aws-exports";
+
+Amplify.configure(awsExports);
 
 const App = () => {
   const [players, setPlayers] = useState<string[]>([]);

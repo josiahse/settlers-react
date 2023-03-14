@@ -1,8 +1,8 @@
 {
   "version": 1,
   "paths": {
-    "/items": {
-      "name": "/items",
+    "/addRoll/{rollId}": {
+      "name": "/addRoll/{rollId}",
       "lambdaFunction": "addRoll",
       "permissions": {
         "setting": "open"
