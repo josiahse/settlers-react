@@ -17,11 +17,7 @@
           "deploymentBucketName": "amplify-amplify0ad94de018084-staging-182253-deployment",
           "s3Key": "amplify-builds/addRoll-522b6e7646353059327a-build.zip"
         },
-        "roll": {},
-        "rollDice": {
-          "deploymentBucketName": "amplify-amplify0ad94de018084-staging-182253-deployment",
-          "s3Key": "amplify-builds/rollDice-4b6d445345526859446d-build.zip"
-        }
+        "roll": {}
       },
       "api": {
         "settlersreact": {},
